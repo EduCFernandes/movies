@@ -10,13 +10,17 @@
         <h1>{{ movie?.title }}</h1>
         <div class="movie-meta">
           <div class="movie-meta__data">
-            <i class="fa fa-calendar mr-2"></i> {{ movie?.year }}
+            <i class="fa fa-calendar mr-2"></i> {{ movie?.release_date | date }}
           </div>
           <div class="movie-meta__data">
-            <i class="fa fa-hourglass mr-2"></i> {{ movie?.runtime }}
+            <i class="fa fa-hourglass mr-2"></i> {{ (movie?.runtime | number) + ' minutes' }}
           </div>
-          <div [class]="'movie-meta__data movie-meta__data--rated ' + movie.rated | lowercase">
+          <!-- <div [class]="'movie-meta__data movie-meta__data--rated ' + movie.rated | lowercase">
             {{ movie?.rated }}
+          </div> -->
+          <div class="movie-meta__data movie-meta__data--votes"
+            [ngClass]="{'success': (movie.vote_average >= 8.5), 'good': (movie.vote_average < 8.5 && movie.vote_average >= 6.5), 'average':(movie.vote_average < 6.5 && movie.vote_average >= 4.5), 'bad': (movie.vote_average < 4.5 && movie.vote_average >= 3), 'terrible': (movie.vote_average < 3)}">
+            {{ movie?.vote_average }}
           </div>
         </div>
 
@@ -26,31 +30,32 @@
           </button>
           <span>Add to favorite</span>
         </div>
-        <p>{{ movie?.plot }}</p>
+        <p>{{ movie?.overview }}</p>
 
         <div class="movie-info">
           <div class="movie-info__block">
             <h3>Cast</h3>
-            <ul>
-              <li *ngFor="let actor of movie.actors">{{ actor }}</li>
+            <ul *ngIf="movie && movie.actors && movie.actors.length">
+              <li *ngFor="let actor of movie.actors">{{ actor?.name }}</li>
             </ul>
           </div>
           <div class="movie-info__block">
             <h3>Genre</h3>
-            <ul>
-              <li *ngFor="let genre of movie.genre">{{ genre }}</li>
+            <ul *ngIf="movie && movie.genres && movie.genres.length">
+              <li *ngFor="let genre of movie.genres">{{ genre?.name }}</li>
             </ul>
           </div>
           <div class="movie-info__block">
             <h3>Director</h3>
             <ul>
-              <li *ngFor="let director of movie.director">{{ director }}</li>
+              <li>{{ movie?.director?.name }}</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-4 order-1 order-md-2 movie-wrapper">
-        <img [src]="movie.poster" alt="Movie poster">
+        <img *ngIf="movie && movie.poster_path" [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
+          alt="Movie poster">
       </div>
     </div>
   </div>

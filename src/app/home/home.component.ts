@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OMDbService } from '../shared/components/services/omdb.service';
 
 @Component({
   selector: 'app-home',
@@ -190,12 +191,30 @@ export class HomeComponent implements OnInit {
       "id": 15
     }
   ];
-  constructor() { }
+
+  searchTitle: string = '';
+
+  constructor(private omdbService: OMDbService) { }
 
   ngOnInit() {
-    this.loading = true;
-    setTimeout(() => {
+    this.loadMovies();
+  }
+
+  async loadMovies() {
+    try {
+      this.loading = true;
+      this.movies = [];
+      let res;
+      if (this.searchTitle) {
+        res = await this.omdbService.getByName({ query: this.searchTitle });
+      } else {
+        res = await this.omdbService.getPopularMovies();
+      }
+      this.movies = res.results;
+    } catch (error) {
+      console.error(error);
+    } finally {
       this.loading = false;
-    }, 1000);
+    }
   }
 }

@@ -1,6 +1,9 @@
 <!-- <div class="favorite-icon"></div> -->
-<img [src]="movie.poster" alt="Movie poster">
+<img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="Movie poster">
 
+<div class="image-icon" *ngIf="!movie.poster_path">
+  <i class="fa fa-image"></i>
+</div>
 <div class="movie-info">
   <span>{{movie.title}}</span>
 </div>

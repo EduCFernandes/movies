@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OMDbService } from '../shared/components/services/omdb.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -194,20 +195,21 @@ export class MovieDetailsComponent implements OnInit {
   ];
   favorite: boolean = false;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private omdbService: OMDbService) { }
 
   ngOnInit() {
     this.movieId = this.route.snapshot.params['id'];
     this.getMovieDetails();
   }
 
-  getMovieDetails() {
+  async getMovieDetails() {
     try {
       this.loading = true;
-      this.movie = this.movies.find(m => m.id === this.movieId);
-      this.movie.genre = this.movie.genre.split(',');
-      this.movie.actors = this.movie.actors.split(',');
-      this.movie.director = this.movie.director.split(',');
+      let res = await this.omdbService.getById(this.movieId);
+      const credits = await this.omdbService.getCredits(this.movieId);
+      this.movie = res;
+      this.movie.actors = credits.cast.splice(0, 4);
+      this.movie.director = credits.crew.find(crewMember => crewMember.job === 'Director');
     } catch (error) {
       console.error(error);
     } finally {

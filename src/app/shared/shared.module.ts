@@ -7,6 +7,8 @@ import { FormsModule } from "@angular/forms";
 import { LoaderComponent } from './components/loader/loader.component';
 import { MovieBoxComponent } from './components/movie-box/movie-box.component';
 import { MoviesGridComponent } from './components/movies-grid/movies-grid.component';
+import { OMDbService } from './components/services/omdb.service';
+import { FeedbackMessageComponent } from './components/feedback-message/feedback-message.component';
 
 @NgModule({
   imports: [
@@ -16,9 +18,9 @@ import { MoviesGridComponent } from './components/movies-grid/movies-grid.compon
     BrowserAnimationsModule,
     FormsModule,
   ],
-  declarations: [LoaderComponent, MovieBoxComponent, MoviesGridComponent],
-  exports: [LoaderComponent, MovieBoxComponent, MoviesGridComponent],
-  providers: [],
+  declarations: [LoaderComponent, MovieBoxComponent, MoviesGridComponent, FeedbackMessageComponent],
+  exports: [LoaderComponent, MovieBoxComponent, MoviesGridComponent, FeedbackMessageComponent],
+  providers: [OMDbService],
   entryComponents: []
 })
 export class SharedModule { }

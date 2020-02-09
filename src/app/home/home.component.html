@@ -1,5 +1,21 @@
-<h1>Home</h1>
+<div class="row">
+  <div class="col-12 col-md-auto">
+    <h1>Discover</h1>
+  </div>
+  <div class="col-12 col-md-5 col-lg-4 ml-auto">
+    <form action="loadMovies()">
+      <div class="form-group d-flex">
+        <input type="text" class="form-control" placeholder="Search movie" [(ngModel)]="searchTitle"
+          [ngModelOptions]="{standalone: true}" [disabled]="loading">
+        <button type="submit" class="blue ml-3" (click)="loadMovies()" [disabled]="loading">Search</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <movies-grid [movies]="movies" *ngIf="!loading"></movies-grid>
-<div class="loader-container" *ngIf="loading">
-  <app-loader [condition]="loading"></app-loader>
+
+<div class="loader-container" *ngIf="loading || !movies.length">
+  <app-feedback-message *ngIf="!loading && !movies.length"></app-feedback-message>
+  <app-loader [condition]="loading" *ngIf="loading"></app-loader>
 </div>
