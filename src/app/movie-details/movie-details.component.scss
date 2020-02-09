@@ -83,7 +83,10 @@
         color: $gray;
       }
     }
-  }
+  }  
+}
+
+@media (max-width: 767px) {
   .movie-wrapper{
     margin-bottom: 15px;
   }
