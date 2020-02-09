@@ -1,0 +1,5 @@
+<h1>Favorites</h1>
+<movies-grid [movies]="movies" *ngIf="!loading"></movies-grid>
+<div class="loader-container" *ngIf="loading">
+  <app-loader [condition]="loading"></app-loader>
+</div>

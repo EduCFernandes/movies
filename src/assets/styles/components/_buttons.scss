@@ -1,0 +1,121 @@
+/**
+* buttons.scss
+*/
+
+@mixin normalColor($color, $color-dark) {
+  border-color: $color;
+  background: $color;
+  [class*="fa"]{
+    color: $white;
+  }
+  &:hover {
+    background: $color-dark;
+    border-color: $color-dark;
+  }
+}
+
+@mixin borderedColor($color, $color-dark) {
+  border-color: $color;
+  background: transparent;
+  color: $color;
+  [class*="fa"]{
+    color: $color;
+  }
+  &:enabled:hover {
+    border-color: $color-dark;
+    color: $color-dark;
+    [class*="fa"]{
+      color: $color-dark;
+    }
+  }
+}
+
+@mixin ghostColor($color, $color-dark) {
+  border-color: transparent;
+  background: transparent;
+  color: $color;
+  [class*="fa"]{
+    color: $color;
+  }
+  &:enabled:hover {
+    color: $color-dark;
+    [class*="fa"]{
+      color: $color-dark;
+    }
+  }
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5rem 1.2rem;
+  line-height: 1.1;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  outline: none;
+  transition: all 0.2s ease;
+  color: $white;
+  border: 2px solid;
+  height: 38px;
+  [class*="fa"]{
+    transition: all 0.2s ease;
+  }
+
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  &.sm {
+    font-size: 0.7rem;
+    padding: 0.3rem 1rem;
+  }
+  & {
+    @include normalColor($gray, $gray-dark);
+  }
+  &.bordered {
+    @include borderedColor($gray, $gray-dark);
+  }
+  &.ghost {
+    @include ghostColor($gray, $gray-dark);
+  }
+  &.green {
+    @include normalColor($green, $green-dark);
+  }
+  &.green-bordered {
+    @include borderedColor($green, $green-dark);
+  }
+  &.green-ghost {
+    @include ghostColor($green, $green-dark);
+  }
+  &.blue {
+    @include normalColor($blue, $blue-dark);
+  }
+  &.blue-bordered {
+    @include borderedColor($blue, $blue-dark);
+  }
+  &.blue-ghost {
+    @include ghostColor($blue, $blue-dark);
+  }
+  &.red {
+    @include normalColor($red, $red-dark);
+  }
+  &.red-bordered {
+    @include borderedColor($red, $red-dark);
+  }
+  &.red-ghost {
+    @include ghostColor($red, $red-dark);
+  }
+}

@@ -1,0 +1,17 @@
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/typography";
+
+@import "components/buttons";
+
+body{
+    background: $black;
+}
+
+* {
+  @include customScrollbar();
+  &:focus {
+    outline: none;
+  }
+}

@@ -1,0 +1,53 @@
+@import 'abstracts/variables';
+
+:host{
+    height: 240px;
+    width: 100%;
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    position: relative;
+    &:hover{
+      transform: scale(1.05);
+      img{
+        transform: scale(1.05);
+      }
+      .movie-info{
+        opacity: 1;
+      }
+    }
+}
+
+img{
+  transition: all 0.5s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  position: relative;
+}
+
+.favorite-icon{
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  background: blue;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-info{
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #00000096;
+  padding: 6px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}

@@ -28,9 +28,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/styles/main.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/styles"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -93,7 +99,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/styles/main.scss"
             ],
             "scripts": []
           }
@@ -124,6 +131,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "movie-platform"
 }

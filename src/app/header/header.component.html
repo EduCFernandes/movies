@@ -1,0 +1,18 @@
+<div class="header">
+  <div class="header__logo">
+    <!-- <img routerLink="home" src="https://cdn.linkapi.com.br/portal/nuvem.svg" alt="Logo"> -->
+    <i class="fa fa-camera-movie"></i>
+    <h1 routerLink="home">Movies Platform</h1>
+  </div>
+  <nav class="header__nav">
+    <ul class="list list--horizontal list--large">
+      <li routerLink="home" [class.selected]="checkActiveRoute('home')">Home</li>
+      <li routerLink="favorites" [class.selected]="checkActiveRoute('favorites')">Favorites</li>
+    </ul>
+  </nav>
+  <nav class="header__nav">
+    <ul class="list list--horizontal list--large">
+      <li>Logout</li>
+    </ul>
+  </nav>
+</div>

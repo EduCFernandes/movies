@@ -1,0 +1,87 @@
+@import 'abstracts/variables';
+
+.loader-container{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-wrapper{
+  img{
+    width: 100%;
+    height: auto;
+  }
+}
+
+.movie-meta{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 15px 0;
+  &__data{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1.2rem;
+    color: $gray;
+    [class*="fa"]{
+      color: $gray;
+    }
+    &:not(:last-child){
+      margin-right: 15px;
+    }
+    &--rated{
+      height: 35px;
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $white;
+      border-radius: 3px;
+      padding: 0 8px;
+      &.g{
+        background: $green;
+      }
+      &.pg-13{
+        background: $blue-dark;
+      }
+      &.pg{
+      background: $yellow;
+      }
+      &.nc-17{
+        background: $blue;
+      }
+      &.r{
+        background: $red;
+      }
+    }
+  }
+}
+
+.favorite-button{
+  margin-bottom: 15px;
+  cursor: pointer;
+  button{
+    width: 38px;
+    padding: 0;
+  }
+}
+
+.movie-info{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 15px;
+  &__block{
+    ul{
+      list-style: none;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      li{
+        color: $gray;
+      }
+    }
+  }
+}

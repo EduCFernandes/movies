@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap');
+@import 'abstracts/variables';
+
+$font-nunito: 'Nunito', sans-serif;
+$base-font-size: 14px;
+// Paragraph Styles
+$paragraph-size       : 1rem;
+$paragraph-line-height: 1.5em;
+$paragraph-margin     : 20px;
+// Header Styles
+$header-size: 2.1rem;
+// Links
+$link-color: $yellow;
+
+// Make type normal across browsers
+*, html, body {
+    font-size: $base-font-size;
+    font-family: $font-nunito;
+    color: $white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+
+// Headers
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: 5px;
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+h1 {
+    font-size: $header-size;
+}
+
+h2 {
+    font-size: $header-size / 1.3;
+}
+
+h3 {
+    font-size: $header-size / 1.5;
+}
+
+h4 {
+    font-size: $header-size / 1.7;
+}
+
+h5 {
+    font-size: $header-size / 1.8;
+}
+
+h6 {
+    font-size: $header-size / 2;
+}
+
+// Paragraphs
+p {
+    margin-bottom: $paragraph-margin;
+    font-size: $paragraph-size;
+    line-height: $paragraph-line-height;
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+// Links
+a {
+    color: $link-color;
+    transition: all 0.2s ease;
+    &:hover {
+        text-decoration: none;
+        color: darken($link-color, 20%);
+    }
+}

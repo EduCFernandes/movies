@@ -1,0 +1,61 @@
+<ng-container *ngIf="!loading">
+  <div class="container">
+    <div class="row">
+      <div class="col-auto">
+        <button class="ghost"><i class="fa fa-arrow-left mr-2"></i>Return</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h1>{{ movie?.title }}</h1>
+        <div class="movie-meta">
+          <div class="movie-meta__data">
+            <i class="fa fa-calendar mr-2"></i> {{ movie?.year }}
+          </div>
+          <div class="movie-meta__data">
+            <i class="fa fa-hourglass mr-2"></i> {{ movie?.runtime }}
+          </div>
+          <div [class]="'movie-meta__data movie-meta__data--rated ' + movie.rated | lowercase">
+            {{ movie?.rated }}
+          </div>
+        </div>
+
+        <div class="favorite-button" (click)="favorite = !favorite" title="Add movie to favorites">
+          <button class="bordered mr-2" [ngClass]="{'bordered': !favorite, 'red': favorite}">
+            <i class="fa fa-heart"></i>
+          </button>
+          <span>Add to favorite</span>
+        </div>
+        <p>{{ movie?.plot }}</p>
+
+        <div class="movie-info">
+          <div class="movie-info__block">
+            <h3>Cast</h3>
+            <ul>
+              <li *ngFor="let actor of movie.actors">{{ actor }}</li>
+            </ul>
+          </div>
+          <div class="movie-info__block">
+            <h3>Genre</h3>
+            <ul>
+              <li *ngFor="let genre of movie.genre">{{ genre }}</li>
+            </ul>
+          </div>
+          <div class="movie-info__block">
+            <h3>Director</h3>
+            <ul>
+              <li *ngFor="let director of movie.director">{{ director }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-5 movie-wrapper">
+        <img [src]="movie.poster" alt="Movie poster">
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<div class="loader-container" *ngIf="loading">
+  <app-loader [condition]="loading"></app-loader>
+</div>
