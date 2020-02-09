@@ -2,11 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="col-auto">
-        <button class="ghost"><i class="fa fa-arrow-left mr-2"></i>Return</button>
+        <button class="ghost pl-0" (click)="return()"><i class="fa fa-arrow-left mr-2"></i>Return</button>
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col order-2 order-md-1">
         <h1>{{ movie?.title }}</h1>
         <div class="movie-meta">
           <div class="movie-meta__data">
@@ -49,7 +49,7 @@
           </div>
         </div>
       </div>
-      <div class="col-5 movie-wrapper">
+      <div class="col-12 col-md-4 order-1 order-md-2 movie-wrapper">
         <img [src]="movie.poster" alt="Movie poster">
       </div>
     </div>
