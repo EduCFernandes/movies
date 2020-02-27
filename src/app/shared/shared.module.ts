@@ -7,7 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { LoaderComponent } from './components/loader/loader.component';
 import { MovieBoxComponent } from './components/movie-box/movie-box.component';
 import { MoviesGridComponent } from './components/movies-grid/movies-grid.component';
-import { OMDbService } from './components/services/omdb.service';
+import { TheMovieDBService } from './components/services/movide-db.service';
 import { FeedbackMessageComponent } from './components/feedback-message/feedback-message.component';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { FeedbackMessageComponent } from './components/feedback-message/feedback
   ],
   declarations: [LoaderComponent, MovieBoxComponent, MoviesGridComponent, FeedbackMessageComponent],
   exports: [LoaderComponent, MovieBoxComponent, MoviesGridComponent, FeedbackMessageComponent],
-  providers: [OMDbService],
+  providers: [TheMovieDBService],
   entryComponents: []
 })
 export class SharedModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { OMDbService } from '../shared/components/services/omdb.service';
+import { TheMovieDBService } from '../shared/components/services/movide-db.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -195,7 +195,7 @@ export class MovieDetailsComponent implements OnInit {
   ];
   favorite: boolean = false;
 
-  constructor(private route: ActivatedRoute, private omdbService: OMDbService) { }
+  constructor(private route: ActivatedRoute, private movieDBService: TheMovieDBService) { }
 
   ngOnInit() {
     this.movieId = this.route.snapshot.params['id'];
@@ -205,8 +205,8 @@ export class MovieDetailsComponent implements OnInit {
   async getMovieDetails() {
     try {
       this.loading = true;
-      let res = await this.omdbService.getById(this.movieId);
-      const credits = await this.omdbService.getCredits(this.movieId);
+      let res = await this.movieDBService.getById(this.movieId);
+      const credits = await this.movieDBService.getCredits(this.movieId);
       this.movie = res;
       this.movie.actors = credits.cast.splice(0, 4);
       this.movie.director = credits.crew.find(crewMember => crewMember.job === 'Director');
@@ -221,5 +221,10 @@ export class MovieDetailsComponent implements OnInit {
 
   return() {
     window.history.back();
+  }
+
+  async rateMovie() {
+    const res = await this.movieDBService.rateMovie(this.movieId, 10);
+    console.log(res);
   }
 }

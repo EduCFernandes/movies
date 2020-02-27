@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OMDbService } from '../shared/components/services/omdb.service';
+import { TheMovieDBService } from '../shared/components/services/movide-db.service';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +10,7 @@ export class HomeComponent implements OnInit {
   loading: boolean = false;
   movies = [];
   searchTitle: string = '';
-
-  constructor(private omdbService: OMDbService) { }
+  constructor(private movieDBService: TheMovieDBService) { }
 
   ngOnInit() {
     this.loadMovies();
@@ -23,9 +22,9 @@ export class HomeComponent implements OnInit {
       this.movies = [];
       let res;
       if (this.searchTitle) {
-        res = await this.omdbService.getByName({ query: this.searchTitle });
+        res = await this.movieDBService.getByName({ query: this.searchTitle });
       } else {
-        res = await this.omdbService.getPopularMovies();
+        res = await this.movieDBService.getPopularMovies();
       }
       this.movies = res.results;
     } catch (error) {
